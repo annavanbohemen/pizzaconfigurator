@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import PizzaBase from './components/pizzaBase.js'
+import PizzaSauce from './components/pizzaSauce.js'
 import ChozenPizza from './components/chozenPizza.js'
+import PizzaToppings from './components/pizzaToppings.js'
 
 class App extends Component {
   render() {
@@ -14,6 +16,8 @@ class App extends Component {
           Configurate your own pizza! 
         </p>
         <PizzaBase/>
+        <PizzaSauce/>
+        <PizzaToppings/>
         <ChozenPizza/>
       </div>
     );

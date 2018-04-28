@@ -1,29 +1,36 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { makeChoice } from '../actions/choice.js'
+import { chooseToppings, removeTopping } from '../actions/choice.js'
+import { pizzaToppings } from '../values/values'
+import store from '../store'
 
 class PizzaToppings extends PureComponent {
-    state = {}
+    
+     handleChange = (event) => {
+        if (event.target.checked) {
+            store.dispatch(chooseToppings(event.target.value))
+        }  else {
+            store.dispatch(removeTopping(event.target.value)) 
+        }
+     }
+
 
     render(){
         return(
             <div>
                 <h3> Choose your toppings:</h3>
                     <p> max. 3 toppings, toppings cost € 0,50 a piece</p>
-                    <form action="">
-                        <input type="checkbox" name="topping" value="Pineapple"/>Pineapple<br />
-                        <input type="checkbox" name="topping" value="Corn"/>corn<br /> 
-                        <input type="checkbox" name="topping" value="Olives (green)"/>Olives (green)<br /> 
-                        <input type="checkbox" name="topping" value="Red onion"/>Red onion<br /> 
-                        <input type="checkbox" name="topping" value="Spinach"/>Spinach<br /> 
-                        <input type="checkbox" name="topping" value="Cherry tomatoes"/>Cherry tomatoes<br /> 
-                        <input type="checkbox" name="topping" value="Chicken"/>Chicken<br /> 
-                    </form>
+                    {
+                    Object.keys(pizzaToppings).map((name, i) =>
+                        <label key={i}>
+                            <input  type="checkbox" name="topping" value={name} onChange={ this.handleChange } />{name} <br/ >
+                        </label>)
+                    } 
             </div>
         )
     }
 }
 
-export default connect(null, { makeChoice })(PizzaToppings)
+export default connect(null, { chooseToppings })(PizzaToppings)
 
-// _Rules: max. 3 toppings, toppings cost € 0,50 apiece_
+// // _Rules: max. 3 toppings, toppings cost € 0,50 apiece_

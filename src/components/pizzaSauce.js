@@ -1,24 +1,30 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { makeChoice } from '../actions/choice.js'
+import { chooseSauce } from '../actions/choice.js'
+import { pizzaSauces } from '../values/values'
+import store from '../store'
 
 class PizzaSauce extends PureComponent {
-    state = {}
+    
+    handleChange = (event) => {
+        store.dispatch(chooseSauce({value: event.target.value}))
+    }
 
     render(){
         return(
             <div>
-                <h3> Choose your sauce:</h3>
-                    <form action="">
-                        <input type="radio" name="sauce" value="White Sauce"/> White Sauce<br />
-                        <input type="radio" name="sauce" value="Red sauce"/> Red sauce<br />
-                        <input type="radio" name="sauce" value="Double red sauce"/> Double red sauce - € 1,00<br />
-                        <input type="radio" name="sauce" value="Mix it u"/> Mix it u - € 1,50
-                    </form>
+             <h3> Choose your sauce:</h3>
+              {
+              Object.keys(pizzaSauces).map((name, i) =>
+                <label key={i}>
+                    <input  type="radio" name="sauce" value={name} onChange={ this.handleChange } />{name} <br/ >
+                </label>)
+              } 
             </div>
         )
     }
 }
     
-export default connect(null, { makeChoice })(PizzaSauce)
+export default connect(null, { chooseSauce })(PizzaSauce)
     
+ 

@@ -1,13 +1,16 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { makeChoice } from '../actions/choice.js'
+import { chooseBase } from '../actions/choice.js'
 import { pizzaBases } from '../values/values'
 import store from '../store'
 
 class PizzaBase extends PureComponent {
-	handleChange = (event) => {
-        store.dispatch(makeChoice({type: event.target.name, value: event.target.value}))
+    
+    handleChange = (event) => {
+        store.dispatch(chooseBase({value: event.target.value}))
     }
+
+ 
 
     render(){
 
@@ -25,5 +28,5 @@ class PizzaBase extends PureComponent {
     }
 }
  
-export default connect(null, { makeChoice })(PizzaBase)
+export default connect(null, { chooseBase })(PizzaBase)
    
