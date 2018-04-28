@@ -3,10 +3,16 @@ import { connect } from 'react-redux'
 import { chooseBase } from '../actions/choice.js'
 import { pizzaBases } from '../values/values'
 import store from '../store'
+import Radio from 'material-ui/Radio'
+
 
 class PizzaBase extends PureComponent {
-    
+    state = {
+        value: '',
+    };
+
     handleChange = (event) => {
+        this.setState({ value: event.target.value });
         store.dispatch(chooseBase({value: event.target.value}))
     }
 
@@ -20,7 +26,7 @@ class PizzaBase extends PureComponent {
               {
                  Object.keys(pizzaBases).map((name, i) =>
                     <label key={i}>
-                    <input  type="radio" name="base" value={name} onChange={ this.handleChange } />
+                    <Radio  name="base" checked={this.state.value === name} value={name} onChange={ this.handleChange } />
                     {name} <br/ ></label>)
               }            
             </div>

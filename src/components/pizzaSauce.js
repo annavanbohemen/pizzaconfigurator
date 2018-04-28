@@ -3,10 +3,15 @@ import { connect } from 'react-redux'
 import { chooseSauce } from '../actions/choice.js'
 import { pizzaSauces } from '../values/values'
 import store from '../store'
+import Radio from 'material-ui/Radio'
 
 class PizzaSauce extends PureComponent {
+    state = {
+        value: '',
+      };
     
     handleChange = (event) => {
+        this.setState({ value: event.target.value });
         store.dispatch(chooseSauce({value: event.target.value}))
     }
 
@@ -17,7 +22,7 @@ class PizzaSauce extends PureComponent {
               {
               Object.keys(pizzaSauces).map((name, i) =>
                 <label key={i}>
-                    <input  type="radio" name="sauce" value={name} onChange={ this.handleChange } />{name} <br/ >
+                    <Radio name="sauce" checked={this.state.value === name} value={name} onChange={ this.handleChange } />{name} <br/ >
                 </label>)
               } 
             </div>

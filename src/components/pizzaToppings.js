@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { chooseToppings, removeTopping } from '../actions/choice.js'
 import { pizzaToppings } from '../values/values'
 import store from '../store'
+import CheckBox from 'material-ui/Checkbox'
 
 class PizzaToppings extends PureComponent {
 
@@ -25,7 +26,7 @@ class PizzaToppings extends PureComponent {
                     {
                     Object.keys(pizzaToppings).map((name, i) =>
                         <label key={i}>
-                            <input  type="checkbox" name="topping" value={name} onChange={ this.handleChange } />{name} <br/ >
+                            <CheckBox name="topping" value={name} onChange={ this.handleChange } />{name} <br/ >
                         </label>)
                     } 
             </div>
