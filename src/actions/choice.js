@@ -1,8 +1,8 @@
-export const MAKE_CHOICE = 'MAKE_CHOICE'
+export const CHOOSE_BASE = 'CHOOSE_BASE'
 
 export const makeChoice = ( choice ) => {
   return {
-    type: MAKE_CHOICE,
+    type: CHOOSE_BASE,
     payload: choice
   }
 }

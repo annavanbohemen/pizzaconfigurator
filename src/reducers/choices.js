@@ -1,10 +1,10 @@
-import { MAKE_CHOICE } from '../actions/choice'
+import { CHOOSE_BASE } from '../actions/choice'
 
 
-export default function(state = [], action = {}) {
+export default function(state = null, action = {}) {
   switch(action.type) {
-    case MAKE_CHOICE :
-      return state.concat(action.payload.choice);
+    case CHOOSE_BASE :
+      return action.payload.value
     default :
       return state
   }

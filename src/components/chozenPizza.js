@@ -7,11 +7,11 @@ class ChozenPizza extends PureComponent {
 
   createPizzaChoice() {
     //console.log(this.props.choices);
-    return this.props.choices.map((part) => {
-      return (
-        <li key={part}>{part}</li>
-      )
-    })
+    // return this.props.choices.map((choice) => {
+    //   return (
+    //     <li key={choice}>{choice}</li>
+    //   )
+    // })
   }
 
   render() {
@@ -19,7 +19,7 @@ class ChozenPizza extends PureComponent {
       <div className="pizzachoice">
         <ul>
         <li>Chozen Pizza:</li>
-          {this.createPizzaChoice()}
+          {this.props.base}
         </ul>
         </div>
       )
@@ -29,7 +29,7 @@ class ChozenPizza extends PureComponent {
 function mapStateToProps(state){
   //console.log(state);
   return {
-    choices: state.choices
+    base: state.choices
   }
 }
 
