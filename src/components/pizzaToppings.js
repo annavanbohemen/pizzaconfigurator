@@ -5,6 +5,8 @@ import { pizzaToppings } from '../values/values'
 import store from '../store'
 
 class PizzaToppings extends PureComponent {
+
+    
     
      handleChange = (event) => {
         if (event.target.checked) {
