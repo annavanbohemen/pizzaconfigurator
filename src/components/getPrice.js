@@ -19,7 +19,7 @@ class GetPrice extends PureComponent {
 
         return(
             <div>
-            {this.totalPrice()}
+            € {this.totalPrice()}
             </div>
         )
     }

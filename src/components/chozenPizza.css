@@ -1,0 +1,15 @@
+.pizzachoice li{
+    list-style-type: none;
+}
+
+.price{
+    text-align: right;
+    font-weight: 900;
+}
+
+.pizzachoice h3{
+    color: rgb(105, 14, 105);
+    font-weight: bold;
+    font-size: 2em;
+    margin-top: 20px;
+}

@@ -1,27 +1,29 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import GetPrice from './getPrice'
+import './chozenPizza.css'
 
 
 class ChozenPizza extends PureComponent {
 
-// function for calculating cost
 
   render() {
     return(
       <div className="pizzachoice">
         <h3>Chozen Pizza:</h3>
-        <h6>BASE:</h6>
+        <h6>Base:</h6>
         <p>  {this.props.base} </p>
-        <h6>SAUCE:</h6>
+        <h6>Sauce:</h6>
         <p>  {this.props.sauce} </p>
-        <h6>TOPPINGS:</h6>
+        <h6>Toppings:</h6>
         <ul> 
         {
             Object.values(this.props.toppings).map((name, i) => <li key={name}> {name} </li>)
         }
         </ul>
-        <GetPrice/>
+        <p className='price'>
+         <GetPrice/>
+        </p>
       </div>
       )
     }
